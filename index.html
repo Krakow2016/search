@@ -58,54 +58,49 @@
       .result {
         padding-bottom: 20px;
       }
+
+      .result em {
+        background-color: yellow;
+      }
     </style>
   </head>
   <body>
 
-<div class="jumbotron vertical-center">
-  <div class="container search-box">
-    <div class="row">
-      <div class="col-md-2 before-input">
-        <h1>ŚDM</h1>
-      </div><!--
-      --><div class="col-md-10">
-        <input id="q" />
+    <div class="jumbotron vertical-center">
+      <div class="container search-box">
+        <div class="row">
+          <div class="col-md-2 before-input">
+            <h1>ŚDM</h1>
+          </div><!--
+          --><div class="col-md-10">
+            <input id="q" value="*" />
 
-        <button id="search" type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-        </button>
+            <button id="search" type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container results">
+        <div class="row">
+          <div class="col-md-7">
+          </div>
+          <div class="col-md-5">
+            details
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="container results">
-    <div class="row">
-      <div class="col-md-7">
-        <div class="result">
-          <a href="#">Stanisław Wasiutyński</a>
-          <div>Stanisław, Stasław, Tasław – staropolskie męskie imię pochodzenia słowiańskiego, złożone z członu Stani- ("stać, stać się, stanąć") oraz członu -sław ("sława").</div>
-        </div>
-        <div class="result">
-          <a href="#">Stanisław Wasiutyński</a>
-          <div>Stanisław, Stasław, Tasław – staropolskie męskie imię pochodzenia słowiańskiego, złożone z członu Stani- ("stać, stać się, stanąć") oraz członu -sław ("sława").</div>
-        </div>
-        <div class="result">
-          <a href="#">Stanisław Wasiutyński</a>
-          <div>Stanisław, Stasław, Tasław – staropolskie męskie imię pochodzenia słowiańskiego, złożone z członu Stani- ("stać, stać się, stanąć") oraz członu -sław ("sława").</div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        details
-      </div>
-    </div>
-  </div>
-</div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-2.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone-min.js"></script>
 
     <script src="js/main.js"></script>
   </body>
