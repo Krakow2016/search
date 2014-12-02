@@ -52,15 +52,20 @@
       }
 
       .results {
-        padding: 30px 0
+        padding: 30px 0;
+        font-size: 120%
       }
 
       .result {
-        padding-bottom: 20px;
+        padding-bottom: 30px;
       }
 
       .result em {
         background-color: yellow;
+      }
+
+      #details {
+        box-shadow: 0px 0px 5px #888;
       }
     </style>
   </head>
@@ -73,7 +78,7 @@
             <h1>ŚDM</h1>
           </div><!--
           --><div class="col-md-10">
-            <input id="q" value="*" />
+            <input id="q" value="angielski" />
 
             <button id="search" type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -86,7 +91,7 @@
         <div class="row">
           <div class="col-md-7">
           </div>
-          <div class="col-md-5">
+          <div id="details" class="col-md-5">
             details
           </div>
         </div>

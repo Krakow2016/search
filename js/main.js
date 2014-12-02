@@ -44,8 +44,20 @@ $(function(){
             return _.map(_.values(all), function(hl){
                 return hl.join(', ')
             }).join(' &hellip; ')
+        },
+        email: function() { return this.get('_source').email },
+        experience: function() { return this.get('_source').experience },
+        interests: function() { return this.get('_source').interests }
+    })
+
+    var Details = Backbone.View.extend({
+        el: '#details',
+        template: _.template("<ul><li>name: <%= display_name() %></li><li>email: <%= email() %></li><li>exp: <%= experience() %></li><li>interests: <%= interests() %></li></ul>"),
+        render: function() {
+            this.$el.html(this.template(this.model))
         }
     })
+    var details = new Details()
 
     var Result = Backbone.View.extend({
         className: 'result',
@@ -55,6 +67,21 @@ $(function(){
             console.log(this.model)
             this.$el.html(this.template(this.model))
             return this
+        },
+        events: {
+            'mouseover': 'details',
+            'mouseout': 'close'
+        },
+        details: function() {
+            clearTimeout(this.timeout)
+            details.model = this.model
+            details.render()
+        },
+        close: function() {
+            clearTimeout(this.timeout)
+            this.timeout = setTimeout(function() {
+                details.$el.empty()
+            }, 1000)
         }
     })
 })
