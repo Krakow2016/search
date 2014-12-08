@@ -18,7 +18,7 @@ $(function(){
         }
 
         $.ajax({
-            url: "http://localhost:9200/sdm/_search",
+            url: "http://146.148.121.30:9200/sdm/_search",
             type: "POST",
             data: JSON.stringify(query),
             contentType: 'application/json',
