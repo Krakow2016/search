@@ -59,6 +59,7 @@ $(function(){
     })
     var details = new Details()
 
+    var timeout
     var Result = Backbone.View.extend({
         className: 'result',
         template: _.template("<a href='#'><%= display_name() %></a><div><%= highlights() %></div>"),
@@ -73,13 +74,13 @@ $(function(){
             'mouseout': 'close'
         },
         details: function() {
-            clearTimeout(this.timeout)
+            clearTimeout(timeout)
             details.model = this.model
             details.render()
         },
         close: function() {
-            clearTimeout(this.timeout)
-            this.timeout = setTimeout(function() {
+            clearTimeout(timeout)
+            timeout = setTimeout(function() {
                 details.$el.empty()
             }, 1000)
         }

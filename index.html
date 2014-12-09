@@ -57,7 +57,11 @@
       }
 
       .result {
-        padding-bottom: 30px;
+        padding: 15px
+      }
+
+      .result:hover {
+        background-color: beige
       }
 
       .result em {
@@ -66,6 +70,10 @@
 
       #details {
         box-shadow: 0px 0px 5px #888;
+      }
+
+      #details:empty {
+        display: none
       }
     </style>
   </head>
@@ -91,9 +99,7 @@
         <div class="row">
           <div class="col-md-7">
           </div>
-          <div id="details" class="col-md-5">
-            details
-          </div>
+          <div id="details" class="col-md-5"></div>
         </div>
       </div>
     </div>
