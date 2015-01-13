@@ -1,7 +1,7 @@
 $(function(){
-    $('#search').click(function(){
+    $('.search').click(function(){
 
-        var q = $('#q').val()
+        var q = $('#name').val()
 
         var query = {
             query: {
@@ -17,18 +17,25 @@ $(function(){
             }
         }
 
+        var username = $('#login').val()
+        var password = $('#pass').val()
+
         $.ajax({
             url: "http://146.148.121.30:9200/sdm/_search",
+            headers: { "Authorization": "Basic " + btoa(username + ":" + password) },
             type: "POST",
             data: JSON.stringify(query),
             contentType: 'application/json',
         }).then(function(resp){
+            $('#log_in').modal('hide')
             var results = []
             resp.hits.hits.forEach(function(hit){
                 var model = new Model(hit)
                 results.push(new Result({model: model}).render().el)
             })
             $('.results > .row > div:first-child').html(results)
+        }).fail(function(){
+            $('#log_in').modal('show')
         })
 
     })
