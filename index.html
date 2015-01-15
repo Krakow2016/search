@@ -77,13 +77,21 @@
 
       .range-a {
         position: absolute;
+        top:50%;
         margin-left: -20px;
+        margin-top: -10px;
         width: 40px;
         text-align: center;
       }
 
       .search-form button {
         margin: 15px
+      }
+
+      .search-form .row > div {
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
       }
     </style>
   </head>
@@ -95,32 +103,32 @@
     <div class="search-form">
       <h4>Dane osobowe</h4>
       <div class="row">
-        <div class="col-md-4"> Imię i nazwisko </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> Imię i nazwisko </div><!--
+        --><div class="col-md-8">
           <input id="name" value="" />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4"> E-mail </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> E-mail </div><!--
+        --><div class="col-md-8">
           <input id="email" value="" />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4"> Adres (zamieszkania lub zameldowania) </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> Adres (zamieszkania lub zameldowania) </div><!--
+        --><div class="col-md-8">
           <input id="address" value="" />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4"> Parafia </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> Parafia </div><!--
+        --><div class="col-md-8">
           <input id="parish" value="" />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4"> Wiek od </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> Wiek od </div><!--
+        --><div class="col-md-8">
           <div class="range-c">
             <input id="age-from" value="" />
           </div><!--
@@ -133,20 +141,20 @@
 
       <h4>Umiejętności</h4>
       <div class="row">
-        <div class="col-md-4"> Wykształcenie </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> Wykształcenie </div><!--
+        --><div class="col-md-8">
           <input id="education" value="" />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4"> Kierunek studiów </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> Kierunek studiów </div><!--
+        --><div class="col-md-8">
           <input id="studies" value="" />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4"> Języki </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> Języki </div><!--
+        --><div class="col-md-8">
           <input id="ang" type="checkbox" /><label>Angielski</label>
           <input id="ger" type="checkbox" /><label>Niemiecki</label>
           <input id="fre" type="checkbox" /><label>Francuski</label>
@@ -155,16 +163,16 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4"> Zainteresowania </div>
-        <div class="col-md-8">
-          <input id="" value="" />
+        <div class="col-md-4"> Doświadczenie i zainteresowania </div><!--
+        --><div class="col-md-8">
+          <input id="interests" value="" />
         </div>
       </div>
 
       <h4>Inne</h4>
       <div class="row">
-        <div class="col-md-4"> Uczestrnisctwo w ŚDM </div>
-        <div class="col-md-8">
+        <div class="col-md-4"> Uczestrnisctwo w ŚDM </div><!--
+        --><div class="col-md-8">
           <input id="wyd13" type="checkbox" /><label>Rio 2013</label>
           <input id="wyd11" type="checkbox" /><label>Madryt 2011</label>
           <input id="wyd08" type="checkbox" /><label>Sydney 2008</label>

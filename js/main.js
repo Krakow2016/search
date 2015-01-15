@@ -1,14 +1,49 @@
 $(function(){
-    $('.search').click(function(){
+    var search = function(){
 
-        var q = $('#name').val()
+        var name      = $('#name').val()
+        var email     = $('#email').val()
+        var address   = $('#address').val()
+        var parish    = $('#parish').val()
+        var age_from  = $('#age_from').val()
+        var age_to    = $('#age_to').val()
+
+        var education = $('#education').val()
+        var studies   = $('#studies').val()
+        var languages
+        var interests = $('#interests').val()
+
+        var wyd
 
         var query = {
-            query: {
-                match: {
-                    _all: q
+            "query" : {
+                "filtered" : {
+                    "query": {
+                        bool: {
+                            should: [
+                                { match: { first_name: name } },
+                                { match: { last_name: name } },
+                                { match: { email: email } },
+                                { match: { address: address } },
+                                { match: { address2: address } },
+                                { match: { parish: parish } },
+                                { match: { education: education } },
+                                { match: { study_field: studies } },
+                                { match: { interests: interests } },
+                                { match: { experience: interests } }
+                            ],
+                        },
+                    },
+                    "filter" : {
+                        "bool" : {
+                            "must" : {
+                                //exists: { field: '' }
+                            }
+                        }
+                    }
                 }
             },
+            //explain: true,
             highlight : {
                 fields : {
                     experience: {},
@@ -20,13 +55,18 @@ $(function(){
         var username = $('#login').val()
         var password = $('#pass').val()
 
-        $.ajax({
+        var params = {
             url: "http://146.148.121.30:9200/sdm/_search",
-            headers: { "Authorization": "Basic " + btoa(username + ":" + password) },
             type: "POST",
             data: JSON.stringify(query),
             contentType: 'application/json',
-        }).then(function(resp){
+        }
+
+        if(username && password) {
+            params['headers'] = { "Authorization": "Basic " + btoa(username + ":" + password) }
+        }
+
+        $.ajax(params).then(function(resp){
             $('#log_in').modal('hide')
             var results = []
             resp.hits.hits.forEach(function(hit){
@@ -38,7 +78,15 @@ $(function(){
             $('#log_in').modal('show')
         })
 
+    }
+
+    $('.search-form input').keypress(function(e) {
+        if (e.which == 13) {
+            search()
+        }
     })
+
+    $('.search').click(search)
 
     var Model = Backbone.Model.extend({
         display_name: function() {
