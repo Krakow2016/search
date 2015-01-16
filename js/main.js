@@ -95,6 +95,11 @@ $(function(){
                 results.push(new Result({model: model}).render().el)
             })
             $('.results > .row > div:first-child').html(results)
+            $('#results-count').text(resp.hits.total)
+
+            if(resp.hits.total) {
+                $('.results-header').show()
+            }
         }).fail(function(e){
             if(e.statusCode === 401) {
                 $('#log_in').modal('show')

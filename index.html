@@ -93,6 +93,10 @@
         vertical-align: middle;
         float: none;
       }
+
+      .results-header {
+        display: none
+      }
     </style>
   </head>
   <body>
@@ -155,11 +159,11 @@
       <div class="row">
         <div class="col-md-4"> Języki </div><!--
         --><div class="col-md-8">
-          <input id="ang" type="checkbox" /><label>Angielski</label>
-          <input id="ger" type="checkbox" /><label>Niemiecki</label>
-          <input id="fre" type="checkbox" /><label>Francuski</label>
-          <input id="ita" type="checkbox" /><label>Włoski</label>
-          <input id="spa" type="checkbox" /><label>Hiszpański</label>
+          <input id="ang" type="checkbox" disabled="Disabled" /><label>Angielski</label>
+          <input id="ger" type="checkbox" disabled="Disabled" /><label>Niemiecki</label>
+          <input id="fre" type="checkbox" disabled="Disabled" /><label>Francuski</label>
+          <input id="ita" type="checkbox" disabled="Disabled" /><label>Włoski</label>
+          <input id="spa" type="checkbox" disabled="Disabled" /><label>Hiszpański</label>
         </div>
       </div>
       <div class="row">
@@ -180,6 +184,7 @@
           <input type="checkbox" name="wyd" id="toronto" value="toronto" /><label for="toronto" >Toronto 2002</label>
           <input type="checkbox" name="wyd" id="rome" value="rome" /><label for="rome" >Rzym 2000</label>
           <input type="checkbox" name="wyd" id="paris" value="paris" /><label for="paris" >Paryż 1997</label>
+        </div>
       </div>
 
       <button class="btn btn-default search">Szukaj</button>
@@ -187,6 +192,7 @@
   </div>
 
   <div class="container results">
+    <h3 class="results-header">Znaleziono <span id="results-count"></span> wyników:</h3>
     <div class="row">
       <div class="col-md-7">
       </div>
