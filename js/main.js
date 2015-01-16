@@ -101,7 +101,7 @@ $(function(){
                 $('.results-header').show()
             }
         }).fail(function(e){
-            if(e.statusCode === 401) {
+            if(e.status === 401) {
                 $('#log_in').modal('show')
             } else {
                 console.log(e)
