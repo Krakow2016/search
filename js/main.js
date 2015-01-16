@@ -5,20 +5,18 @@ $(function(){
         var email     = $('#email').val()
         var address   = $('#address').val()
         var parish    = $('#parish').val()
-        var age_from  = $('#age_from').val()
-        var age_to    = $('#age_to').val()
+        var age_from  = parseInt($('#age-from').val())
+        var age_to    = parseInt($('#age-to').val())
 
         var education = $('#education').val()
         var studies   = $('#studies').val()
         var languages
         var interests = $('#interests').val()
 
-        var wyd
-
         var query = {
-            "query" : {
-                "filtered" : {
-                    "query": {
+            query : {
+                filtered : {
+                    query: {
                         bool: {
                             should: [
                                 { match: { first_name: name } },
@@ -34,13 +32,7 @@ $(function(){
                             ],
                         },
                     },
-                    "filter" : {
-                        "bool" : {
-                            "must" : {
-                                //exists: { field: '' }
-                            }
-                        }
-                    }
+                    filter : { }
                 }
             },
             //explain: true,
@@ -49,6 +41,35 @@ $(function(){
                     experience: {},
                     interests: {}
                 }
+            }
+        }
+
+        // Uczestnictwo w poprzednich Światowych Dniach Młodzieży
+        var wyds = $('[name=wyd]:checked')
+        if(wyds.length) {
+            query.query.filtered.filter.and = []
+            wyds.each(function(i, wyd){
+                query.query.filtered.filter.and.push({
+                    exists: { field: 'previous_wyd.'+wyd.value }
+                })
+            })
+        }
+
+        if(age_from || age_to) {
+            var today = new Date()
+            var range = {
+                range: {
+                    birth_date: {} }}
+
+            if(age_from)
+                range.range.birth_date.lte = new Date(new Date().setMonth(today.getMonth() - 12*(age_from-1)))
+            if(age_to)
+                range.range.birth_date.gte = new Date(new Date().setMonth(today.getMonth() - 12*age_to))
+
+            if(query.query.filtered.filter.and) {
+              query.query.filtered.filter.and.push(range)
+            } else {
+              query.query.filtered.filter.and = [range]
             }
         }
 
@@ -74,8 +95,12 @@ $(function(){
                 results.push(new Result({model: model}).render().el)
             })
             $('.results > .row > div:first-child').html(results)
-        }).fail(function(){
-            $('#log_in').modal('show')
+        }).fail(function(e){
+            if(e.statusCode === 401) {
+                $('#log_in').modal('show')
+            } else {
+                console.log(e)
+            }
         })
 
     }
