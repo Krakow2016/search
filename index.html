@@ -9,6 +9,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="css/style.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -16,214 +18,221 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style>
-      html, body {
-        height: 100%
-      }
-
-      .search-box {
-        width: 100%;
-        // height: 600px;
-        background-color: beige
-      }
-
-      .results {
-        padding: 30px 0;
-        font-size: 120%
-      }
-
-      .result {
-        padding: 15px
-      }
-
-      .result:hover {
-        background-color: beige
-      }
-
-      .result em {
-        background-color: yellow;
-      }
-
-      #details {
-        box-shadow: 0px 0px 5px #888;
-      }
-
-      #details:empty {
-        display: none
-      }
-
-      .search-box .row {
-        margin: 5px
-      }
-
-      .search-box input:not([type]) {
-        width: 100%
-      }
-
-      .search-form {
-        max-width: 800px;
-        margin: auto
-      }
-
-      .range-c {
-        width: 50%;
-        padding: 0 20px;
-        display: inline-block;
-      }
-
-      .range-c input {
-        text-align: center;
-      }
-
-      .range-a {
-        position: absolute;
-        top:50%;
-        margin-left: -20px;
-        margin-top: -10px;
-        width: 40px;
-        text-align: center;
-      }
-
-      .search-form button {
-        margin: 15px
-      }
-
-      .search-form .row > div {
-        display: inline-block;
-        vertical-align: middle;
-        float: none;
-      }
-
-      .results-header {
-        display: none
-      }
-    </style>
   </head>
   <body>
 
-  <div class="container search-box">
-    <h1 class="text-center">Wyszukiwarka wolontariuszy</h1>
+    <div class="container search-box">
+      <h1 class="text-center">Wyszukiwarka wolontariuszy</h1>
 
-    <div class="search-form">
+      <div class="search-form">
+        <h4>Dane osobowe</h4>
+        <div class="row">
+          <div class="col-md-4"> Imię i nazwisko </div><!--
+          --><div class="col-md-8">
+            <input id="name" value="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"> E-mail </div><!--
+          --><div class="col-md-8">
+            <input id="email" value="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"> Adres (zamieszkania lub zameldowania) </div><!--
+          --><div class="col-md-8">
+            <input id="address" value="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"> Parafia </div><!--
+          --><div class="col-md-8">
+            <input id="parish" value="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"> Wiek od </div><!--
+          --><div class="col-md-8">
+            <div class="range-c">
+              <input id="age-from" value="" />
+            </div><!--
+            --><span class="range-a"> do </span><!--
+            --><div class="range-c">
+              <input id="age-to" value="" />
+            </div>
+          </div>
+        </div>
+
+        <h4>Umiejętności</h4>
+        <div class="row">
+          <div class="col-md-4"> Wykształcenie </div><!--
+          --><div class="col-md-8">
+            <input id="education" value="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"> Kierunek studiów </div><!--
+          --><div class="col-md-8">
+            <input id="studies" value="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"> Języki </div><!--
+          --><div class="col-md-8">
+            <input id="ang" type="checkbox" disabled="Disabled" /><label>Angielski</label>
+            <input id="ger" type="checkbox" disabled="Disabled" /><label>Niemiecki</label>
+            <input id="fre" type="checkbox" disabled="Disabled" /><label>Francuski</label>
+            <input id="ita" type="checkbox" disabled="Disabled" /><label>Włoski</label>
+            <input id="spa" type="checkbox" disabled="Disabled" /><label>Hiszpański</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"> Doświadczenie i zainteresowania </div><!--
+          --><div class="col-md-8">
+            <input id="interests" value="" />
+          </div>
+        </div>
+
+        <h4>Inne</h4>
+        <div class="row">
+          <div class="col-md-4"> Uczestrnisctwo w ŚDM </div><!--
+          --><div class="col-md-8">
+            <input type="checkbox" name="wyd" id="rio" value="rio" />
+            <label for="rio" >Rio 2013</label>
+            <input type="checkbox" name="wyd" id="madrit" value="madrit" />
+            <label for="madrit" >Madryt 2011</label>
+            <input type="checkbox" name="wyd" id="sydney" value="sydney" />
+            <label for="sydney" >Sydney 2008</label>
+            <input type="checkbox" name="wyd" id="cologne" value="cologne" />
+            <label for="cologne" >Kolonia 2005</label>
+            <input type="checkbox" name="wyd" id="toronto" value="toronto" />
+            <label for="toronto" >Toronto 2002</label>
+            <input type="checkbox" name="wyd" id="rome" value="rome" />
+            <label for="rome" >Rzym 2000</label>
+            <input type="checkbox" name="wyd" id="paris" value="paris" />
+            <label for="paris" >Paryż 1997</label>
+          </div>
+        </div>
+
+        <button class="btn btn-default search">Szukaj</button>
+      </div>
+    </div>
+
+    <div class="container results">
+      <h3 class="results-header">Znaleziono <span id="results-count"></span> wyników:</h3>
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div id="details" class="col-md-6"></div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="log_in" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Zaloguj się</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Login</label>
+              <input type="email" class="form-control" id="login" placeholder="Login">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Hasło</label>
+              <input type="password" class="form-control" id="pass" placeholder="Hasło">
+            </div>
+            <div class="text-right">
+              <button type="button" class="btn btn-primary search">Zaloguj</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script id="details-template" type="text/x-handlebars-template">
+      <h3 class="text-center"><%= display_name() %></h3>
+      <div class="text-center">
+        <a href="mailto:<%= email() %>" target="_blank"><%= email() %></a>
+      </div>
+
       <h4>Dane osobowe</h4>
-      <div class="row">
-        <div class="col-md-4"> Imię i nazwisko </div><!--
-        --><div class="col-md-8">
-          <input id="name" value="" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"> E-mail </div><!--
-        --><div class="col-md-8">
-          <input id="email" value="" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"> Adres (zamieszkania lub zameldowania) </div><!--
-        --><div class="col-md-8">
-          <input id="address" value="" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"> Parafia </div><!--
-        --><div class="col-md-8">
-          <input id="parish" value="" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"> Wiek od </div><!--
-        --><div class="col-md-8">
-          <div class="range-c">
-            <input id="age-from" value="" />
-          </div><!--
-          --><span class="range-a"> do </span><!--
-          --><div class="range-c">
-            <input id="age-to" value="" />
-          </div>
-        </div>
-      </div>
 
-      <h4>Umiejętności</h4>
-      <div class="row">
-        <div class="col-md-4"> Wykształcenie </div><!--
-        --><div class="col-md-8">
-          <input id="education" value="" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"> Kierunek studiów </div><!--
-        --><div class="col-md-8">
-          <input id="studies" value="" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"> Języki </div><!--
-        --><div class="col-md-8">
-          <input id="ang" type="checkbox" disabled="Disabled" /><label>Angielski</label>
-          <input id="ger" type="checkbox" disabled="Disabled" /><label>Niemiecki</label>
-          <input id="fre" type="checkbox" disabled="Disabled" /><label>Francuski</label>
-          <input id="ita" type="checkbox" disabled="Disabled" /><label>Włoski</label>
-          <input id="spa" type="checkbox" disabled="Disabled" /><label>Hiszpański</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"> Doświadczenie i zainteresowania </div><!--
-        --><div class="col-md-8">
-          <input id="interests" value="" />
-        </div>
-      </div>
+      <table class="table">
+        <tr>
+          <td>
+            Data urodzenia:
+          </td><td>
+            <%= birth() %> (<%= age() %> lat)
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Telefon:
+          </td><td>
+            <%= phone() %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Miejsce zamieszkania:
+          </td><td>
+            <%= address() %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Parafia:
+          </td><td>
+            <%= parish() %>
+          </td>
+        </tr>
+      </table>
 
-      <h4>Inne</h4>
-      <div class="row">
-        <div class="col-md-4"> Uczestrnisctwo w ŚDM </div><!--
-        --><div class="col-md-8">
-          <input type="checkbox" name="wyd" id="rio" value="rio" /><label for="rio" >Rio 2013</label>
-          <input type="checkbox" name="wyd" id="madrit" value="madrit" /><label for="madrit" >Madryt 2011</label>
-          <input type="checkbox" name="wyd" id="sydney" value="sydney" /><label for="sydney" >Sydney 2008</label>
-          <input type="checkbox" name="wyd" id="cologne" value="cologne" /><label for="cologne" >Kolonia 2005</label>
-          <input type="checkbox" name="wyd" id="toronto" value="toronto" /><label for="toronto" >Toronto 2002</label>
-          <input type="checkbox" name="wyd" id="rome" value="rome" /><label for="rome" >Rzym 2000</label>
-          <input type="checkbox" name="wyd" id="paris" value="paris" /><label for="paris" >Paryż 1997</label>
-        </div>
-      </div>
+      <h4>Edukacja</h4>
 
-      <button class="btn btn-default search">Szukaj</button>
-    </div>
-  </div>
+      <table class="table">
+        <tr>
+          <td>
+            Wykształcenie
+          </td>
+          <td>
+             <%= education() %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Kierunek
+          </td>
+          <td>
+            <%= studies() %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Języki:
+          </td>
+          <td>
+            ...
+          </td>
+        </tr>
+      </table>
 
-  <div class="container results">
-    <h3 class="results-header">Znaleziono <span id="results-count"></span> wyników:</h3>
-    <div class="row">
-      <div class="col-md-7">
-      </div>
-      <div id="details" class="col-md-5"></div>
-    </div>
-  </div>
+      <h4>Doświadczenie</h4>
+      <p><%= experience() %></p>
 
-  <!-- Modal -->
-  <div class="modal fade" id="log_in" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Zaloguj się</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Login</label>
-            <input type="email" class="form-control" id="login" placeholder="Login">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Hasło</label>
-            <input type="password" class="form-control" id="pass" placeholder="Hasło">
-          </div>
-          <div class="text-right">
-            <button type="button" class="btn btn-primary search">Zaloguj</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <h4>Zainteresowania</h4>
+      <p><%= interests() %></p>
+
+      <h4>Gdzie chcę się zaangażować</h4>
+      <p><%= departments() %></p>
+
+      <h4>Dostępność</h4>
+      <p><%= availability() %></p>
+    </script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-2.1.1.min.js"></script>

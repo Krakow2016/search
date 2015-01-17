@@ -132,19 +132,43 @@ $(function(){
         },
         email: function() { return this.get('_source').email },
         experience: function() { return this.get('_source').experience },
-        interests: function() { return this.get('_source').interests }
+        interests: function() { return this.get('_source').interests },
+        parish: function() { return this.get('_source').parish },
+        address: function() { return this.get('_source').address },
+        phone: function() { return this.get('_source').mobile },
+        birth: function() { return this.get('_source').birth_date },
+        age: function() { return new Date().getYear() - new Date(this.birth()).getYear() },
+
+        studies: function() { return this.get('_source').study_field },
+        education: function() { return this.get('_source').education },
+        departments: function() { return this.get('_source').departments.join(',') },
+        availability: function() { return this.get('_source').availability }
     })
+
+    var timeout
 
     var Details = Backbone.View.extend({
         el: '#details',
-        template: _.template("<ul><li>name: <%= display_name() %></li><li>email: <%= email() %></li><li>exp: <%= experience() %></li><li>interests: <%= interests() %></li></ul>"),
+        template: _.template($('#details-template').html()),
         render: function() {
             this.$el.html(this.template(this.model))
+        },
+        events: {
+            'mouseover': 'details',
+            'mouseout': 'close'
+        },
+        details: function() {
+            clearTimeout(timeout)
+        },
+        close: function() {
+            clearTimeout(timeout)
+            timeout = setTimeout(function() {
+                details.$el.empty()
+            }, 1000)
         }
     })
     var details = new Details()
 
-    var timeout
     var Result = Backbone.View.extend({
         className: 'result',
         template: _.template("<a href='#'><%= display_name() %></a><div><%= highlights() %></div>"),
