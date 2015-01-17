@@ -152,6 +152,20 @@ $(function(){
         template: _.template($('#details-template').html()),
         render: function() {
             this.$el.html(this.template(this.model))
+
+            var height = this.$el.height()
+            var top = $('#details').parent().offset().top
+            var bottom = $( window ).height() - top - height
+
+            if(bottom < 0) { // not visible
+                if(-bottom > top) {
+                    $('#details').css('top', -top)
+                } else {
+                    $('#details').css('top', bottom)
+                }
+            } else {
+                $('#details').css('top', 0)
+            }
         },
         events: {
             'mouseover': 'details',
