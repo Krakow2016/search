@@ -79,11 +79,14 @@
         <div class="row">
           <div class="col-md-4"> Języki </div><!--
           --><div class="col-md-8">
-            <input id="ang" type="checkbox" disabled="Disabled" /><label>Angielski</label>
-            <input id="ger" type="checkbox" disabled="Disabled" /><label>Niemiecki</label>
-            <input id="fre" type="checkbox" disabled="Disabled" /><label>Francuski</label>
-            <input id="ita" type="checkbox" disabled="Disabled" /><label>Włoski</label>
-            <input id="spa" type="checkbox" disabled="Disabled" /><label>Hiszpański</label>
+            <input id="ang" name="language" type="checkbox" value="angielski" /><label for="ang">Angielski</label>
+            <input id="ita" name="language" type="checkbox" value="włoski" /><label for="ita">Włoski</label>
+            <input id="spa" name="language" type="checkbox" value="hiszpański" /><label for="spa">Hiszpański</label>
+            <input id="por" name="language" type="checkbox" value="portugalski" /><label for="por">Portugalski</label>
+            <input id="ger" name="language" type="checkbox" value="niemiecki" /><label for="ger">Niemiecki</label>
+            <input id="fre" name="language" type="checkbox" value="francuski" /><label for="fre">Francuski</label>
+            <input id="rus" name="language" type="checkbox" value="rosyjski" /><label for="rus">Rosyjski</label>
+            <input id="ukr" name="language" type="checkbox" value="ukraiński" /><label for="ukr">Ukraiński</label>
           </div>
         </div>
         <div class="row">
@@ -218,7 +221,7 @@
             Języki:
           </td>
           <td>
-            ...
+            <%= languages() %>
           </td>
         </tr>
       </table>

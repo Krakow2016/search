@@ -30,6 +30,7 @@ $(function(){
                                 { match: { interests: interests } },
                                 { match: { experience: interests } }
                             ],
+                            must: []
                         },
                     },
                     filter : { }
@@ -43,6 +44,14 @@ $(function(){
                 }
             }
         }
+
+        // Jęzkyki
+        var langs = $('[name=language]:checked')
+        langs.each(function(i, lang){
+            var range = {}
+            range['languages.'+lang.value+'.level'] = { gte: 1, lte: 10 }
+            query.query.filtered.query.bool.must.push({range: range})
+        })
 
         // Uczestnictwo w poprzednich Światowych Dniach Młodzieży
         var wyds = $('[name=wyd]:checked')
@@ -118,6 +127,14 @@ $(function(){
 
     $('.search').click(search)
 
+    var stars = {
+        0: '&#9734;&#9734;&#9734;&#9734;&#9734;',
+        2: '&#9733;&#9734;&#9734;&#9734;&#9734;',
+        4: '&#9733;&#9733;&#9734;&#9734;&#9734;',
+        6: '&#9733;&#9733;&#9733;&#9734;&#9734;',
+        8: '&#9733;&#9733;&#9733;&#9733;&#9734;',
+        10: '&#9733;&#9733;&#9733;&#9733;&#9733;' }
+
     var Model = Backbone.Model.extend({
         display_name: function() {
             var source = this.get('_source')
@@ -142,7 +159,12 @@ $(function(){
         studies: function() { return this.get('_source').study_field },
         education: function() { return this.get('_source').education },
         departments: function() { return this.get('_source').departments.join(',') },
-        availability: function() { return this.get('_source').availability }
+        availability: function() { return this.get('_source').availability },
+        languages: function() {
+            return _.map(this.get('_source').languages, function(level, lang) {
+                return lang+": "+stars[level.level]
+            }).join(', ')
+        }
     })
 
     var timeout
