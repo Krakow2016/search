@@ -80,13 +80,13 @@
           <div class="col-md-4"> Języki </div><!--
           --><div class="col-md-8">
             <input id="ang" name="language" type="checkbox" value="angielski" /><label for="ang">Angielski</label>
-            <input id="ita" name="language" type="checkbox" value="włoski" /><label for="ita">Włoski</label>
+            <input id="fre" name="language" type="checkbox" value="francuski" /><label for="fre">Francuski</label>
             <input id="spa" name="language" type="checkbox" value="hiszpański" /><label for="spa">Hiszpański</label>
             <input id="por" name="language" type="checkbox" value="portugalski" /><label for="por">Portugalski</label>
             <input id="ger" name="language" type="checkbox" value="niemiecki" /><label for="ger">Niemiecki</label>
-            <input id="fre" name="language" type="checkbox" value="francuski" /><label for="fre">Francuski</label>
             <input id="rus" name="language" type="checkbox" value="rosyjski" /><label for="rus">Rosyjski</label>
             <input id="ukr" name="language" type="checkbox" value="ukraiński" /><label for="ukr">Ukraiński</label>
+            <input id="ita" name="language" type="checkbox" value="włoski" /><label for="ita">Włoski</label>
           </div>
         </div>
         <div class="row">
@@ -163,69 +163,40 @@
       <div class="text-center">
         <a href="mailto:<%= email() %>" target="_blank"><%= email() %></a>
       </div>
-
       <h4>Dane osobowe</h4>
-
       <table class="table">
         <tr>
-          <td>
-            Data urodzenia:
-          </td><td>
-            <%= birth() %> (<%= age() %> lat)
-          </td>
+          <td> Data urodzenia: </td>
+          <td> <%= birth() %> (<%= age() %> lat) </td>
         </tr>
         <tr>
-          <td>
-            Telefon:
-          </td><td>
-            <%= phone() %>
-          </td>
+          <td> Telefon: </td>
+          <td> <%= phone() %> </td>
         </tr>
         <tr>
-          <td>
-            Miejsce zamieszkania:
-          </td><td>
-            <%= address() %>
-          </td>
+          <td> Miejsce zamieszkania: </td>
+          <td> <%= address() %> </td>
         </tr>
         <tr>
-          <td>
-            Parafia:
-          </td><td>
-            <%= parish() %>
-          </td>
+          <td> Parafia: </td>
+          <td> <%= parish() %> </td>
         </tr>
       </table>
-
       <h4>Edukacja</h4>
-
       <table class="table">
         <tr>
-          <td>
-            Wykształcenie
-          </td>
-          <td>
-             <%= education() %>
-          </td>
+          <td> Wykształcenie </td>
+          <td> <%= education() %> </td>
         </tr>
         <tr>
-          <td>
-            Kierunek
-          </td>
-          <td>
-            <%= studies() %>
-          </td>
+          <td> Kierunek </td>
+          <td> <%= studies() %> </td>
         </tr>
         <tr>
-          <td>
-            Języki:
-          </td>
-          <td>
-            <%= languages() %>
-          </td>
+          <td> Języki: </td>
+          <td> <%= languages() %> </td>
         </tr>
       </table>
-
       <h4>Doświadczenie</h4>
       <p><%= experience() %></p>
 
@@ -237,6 +208,10 @@
 
       <h4>Dostępność</h4>
       <p><%= availability() %></p>
+
+      <p class="text-right">
+        <a href="mailto:?subject=<%= display_name() %>" target="_blank" class="email">Przekaż dalej &#9993;</a>
+      </p>
     </script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

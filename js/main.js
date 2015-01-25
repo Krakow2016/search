@@ -163,7 +163,7 @@ $(function(){
         languages: function() {
             return _.map(this.get('_source').languages, function(level, lang) {
                 return lang+": "+stars[level.level]
-            }).join(', ')
+            }).sort().join(', ')
         }
     })
 
@@ -191,7 +191,8 @@ $(function(){
         },
         events: {
             'mouseover': 'details',
-            'mouseout': 'close'
+            'mouseout': 'close',
+            'click .email': 'email'
         },
         details: function() {
             clearTimeout(timeout)
@@ -201,6 +202,10 @@ $(function(){
             timeout = setTimeout(function() {
                 details.$el.empty()
             }, 1000)
+        },
+        email: function(e) {
+            var target = $(e.target)
+            target.attr('href', target.attr('href')+'&body='+encodeURIComponent(this.$el.text()))
         }
     })
     var details = new Details()
@@ -216,7 +221,7 @@ $(function(){
         },
         events: {
             'mouseover': 'details',
-            'mouseout': 'close'
+            'mouseout': 'close',
         },
         details: function() {
             clearTimeout(timeout)
