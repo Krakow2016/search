@@ -15,25 +15,39 @@ $(function(){
 
         var query = {
             query : {
-                filtered : {
-                    query: {
-                        bool: {
-                            should: [
-                                { match: { first_name: name } },
-                                { match: { last_name: name } },
-                                { match: { email: email } },
-                                { match: { address: address } },
-                                { match: { address2: address } },
-                                { match: { parish: parish } },
-                                { match: { education: education } },
-                                { match: { study_field: studies } },
-                                { match: { interests: interests } },
-                                { match: { experience: interests } }
-                            ],
-                            must: []
-                        },
+                function_score: {
+                    query : {
+                        filtered : {
+                            query: {
+                                bool: {
+                                    should: [
+                                        { bool: {
+                                            should: [
+                                                { match: { first_name: name } },
+                                                { match: { last_name: name } },
+                                            ]
+                                        }},
+                                        { match: { email: email } },
+                                        { match: { address: address } },
+                                        { match: { address2: address } },
+                                        { match: { parish: parish } },
+                                        { match: { education: education } },
+                                        { match: { study_field: studies } },
+                                        { bool: {
+                                            should: [
+                                                { match: { interests: interests } },
+                                                { match: { experience: interests } }
+                                            ]
+                                        }}
+                                    ],
+                                    must: []
+                                },
+                            },
+                            filter : { },
+                        }
                     },
-                    filter : { }
+                    functions: [],
+                    score_mode: "avg"
                 }
             },
             //explain: true,
@@ -50,15 +64,21 @@ $(function(){
         langs.each(function(i, lang){
             var range = {}
             range['languages.'+lang.value+'.level'] = { gte: 1, lte: 10 }
-            query.query.filtered.query.bool.must.push({range: range})
+            query.query.function_score.query.filtered.query.bool.must.push({range: range})
+            query.query.function_score.functions.push({
+                field_value_factor: {
+                    "field" : "languages."+lang.value+".level",
+                    "modifier" : "square"
+                }
+            })
         })
 
         // Uczestnictwo w poprzednich Światowych Dniach Młodzieży
         var wyds = $('[name=wyd]:checked')
         if(wyds.length) {
-            query.query.filtered.filter.and = []
+            query.query.function_score.query.filtered.filter.and = []
             wyds.each(function(i, wyd){
-                query.query.filtered.filter.and.push({
+                query.query.function_score.query.filtered.filter.and.push({
                     exists: { field: 'previous_wyd.'+wyd.value }
                 })
             })
