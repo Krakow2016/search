@@ -112,6 +112,8 @@ $(function(){
             contentType: 'application/json',
         }
 
+        $('#form').attr('action', params.url.replace("http://", "http://"+username+":"+password+"@"))
+
         if(username && password) {
             params['headers'] = { "Authorization": "Basic " + btoa(username + ":" + password) }
         }
@@ -146,6 +148,8 @@ $(function(){
     })
 
     $('.search').click(search)
+
+    $('#form').submit(search)
 
     var stars = {
         0: '&#9734;&#9734;&#9734;&#9734;&#9734;',
