@@ -72,6 +72,18 @@ $(function(){
                 }
             })
         })
+        if($('#other_val').val()) {
+            var val = $('#other_val').val()
+            var range = {}
+            range['languages.'+val+'.level'] = { gte: 1, lte: 10 }
+            query.query.function_score.query.filtered.query.bool.must.push({range: range})
+            query.query.function_score.functions.push({
+                field_value_factor: {
+                    "field" : "languages."+val+".level",
+                    "modifier" : "square"
+                }
+            })
+        }
 
         // Uczestnictwo w poprzednich Światowych Dniach Młodzieży
         var wyds = $('[name=wyd]:checked')
