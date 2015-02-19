@@ -213,7 +213,7 @@ $(function(){
 
             var height = this.$el.height()
             var top = $('#details').parent().offset().top
-            var bottom = $( window ).height() - top - height
+            var bottom = $( window ).height() - top - height + window.scrollY
 
             if(bottom < 0) { // not visible
                 if(-bottom > top) {
@@ -228,7 +228,11 @@ $(function(){
         events: {
             'mouseover': 'details',
             'mouseout': 'close',
+            'click .print': 'print',
             'click .email': 'email'
+        },
+        print: function() {
+            window.print()
         },
         details: function() {
             clearTimeout(timeout)
