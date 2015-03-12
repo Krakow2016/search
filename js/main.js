@@ -14,6 +14,7 @@ $(function(){
         var interests = $('#interests').val()
 
         var query = {
+            size: 100,
             query : {
                 function_score: {
                     query : {
@@ -147,6 +148,7 @@ $(function(){
             if(e.status === 401) {
                 $('#log_in').modal('show')
             } else {
+                alert('Brak połączenia z bazą danych :(')
                 console.log(e)
             }
         })
@@ -213,14 +215,10 @@ $(function(){
 
             var height = this.$el.height()
             var top = $('#details').parent().offset().top
-            var bottom = $( window ).height() - top - height + window.scrollY
+            var scroll = window.scrollY
 
-            if(bottom < 0) { // not visible
-                if(-bottom > top) {
-                    $('#details').css('top', -top)
-                } else {
-                    $('#details').css('top', bottom)
-                }
+            if (top < scroll) { // top not visible
+                $('#details').css('top', scroll-top)
             } else {
                 $('#details').css('top', 0)
             }
