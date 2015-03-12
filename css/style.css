@@ -41,6 +41,10 @@ html, body {
   font-weight: bold
 }
 
+#details i {
+  color: #aaa
+}
+
 .search-box .row {
   margin: 5px
 }

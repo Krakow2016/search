@@ -13,6 +13,9 @@ $(function(){
         var languages
         var interests = $('#interests').val()
 
+        var departments = $('#departments').val()
+        var comments = $('#comments').val()
+
         var query = {
             size: 100,
             query : {
@@ -34,6 +37,8 @@ $(function(){
                                         { match: { parish: parish } },
                                         { match: { education: education } },
                                         { match: { study_field: studies } },
+                                        { match: { departments: departments } },
+                                        { match: { comments: comments } },
                                         { bool: {
                                             should: [
                                                 { match: { interests: interests } },
@@ -55,7 +60,9 @@ $(function(){
             highlight : {
                 fields : {
                     experience: {},
-                    interests: {}
+                    interests: {},
+                    departments: {},
+                    comments: {}
                 }
             }
         }
@@ -192,17 +199,21 @@ $(function(){
         address: function() { return this.get('_source').address },
         phone: function() { return this.get('_source').mobile },
         birth: function() { return this.get('_source').birth_date },
-        age: function() { return new Date().getYear() - new Date(this.birth()).getYear() },
-
+        age: function() {
+            if (this.birth()) {
+                return "("+(new Date().getYear() - new Date(this.birth()).getYear())+" lat)"
+            }
+        },
         studies: function() { return this.get('_source').study_field },
         education: function() { return this.get('_source').education },
-        departments: function() { return this.get('_source').departments.join(',') },
+        departments: function() { return this.get('_source').departments },
         availability: function() { return this.get('_source').availability },
         languages: function() {
             return _.map(this.get('_source').languages, function(level, lang) {
                 return lang+": "+stars[level.level]
             }).sort().join(', ')
-        }
+        },
+        comments: function() { return this.get('_source').comments },
     })
 
     var timeout
