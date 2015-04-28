@@ -126,7 +126,7 @@ $(function(){
         var password = $('#pass').val()
 
         var params = {
-            url: "http://146.148.121.30:9200/sdm/_search",
+            url: "http://52.28.75.173:3000/sdm/_search",
             type: "POST",
             data: JSON.stringify(query),
             contentType: 'application/json',
